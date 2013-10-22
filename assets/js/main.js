@@ -44,7 +44,7 @@ $(document).ready(function() {
 		});
 
 		// add an OpenStreetMap tile layer
-		L.tileLayer('http://calvinnwq.github.io/maperitive-presentation/assets/tiles/{z}/{x}/{y}.png', {
+		L.tileLayer('assets/tiles/{z}/{x}/{y}.png', {
 //			L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', {
 		  attribution: "Calvin's custom map design"
 		, minZoom: 11

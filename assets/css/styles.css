@@ -25,6 +25,8 @@
   box-shadow: none !important;
 }
 
-#map a {
-  line-height: auto;
+.leaflet-control-zoom a {
+  line-height: 26px !important;
+  font: bold 24px 'Lucida Console', Monaco, monospace;
 }
+

@@ -16,7 +16,7 @@
 	<link rel="stylesheet" href="assets/css/reveal.min.css">
 	<link rel="stylesheet" href="assets/css/theme/sky.css" id="theme">
 	<link rel="stylesheet" href="assets/lib/css/zenburn.css">
-	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+	<link rel="stylesheet" href="assets/css/leaflet.css" />
 	<link rel="stylesheet" href="assets/plugin/fancybox/jquery.fancybox.css">
 	<link rel="stylesheet" href="assets/css/styles.css">
 
@@ -98,11 +98,48 @@
 				</section>
 			</section>
 
-			<!-- SLIDE: 2. GEO BOUNDING BOX -->
+
+			<!-- SLIDE: 2. Starting Up Maperitive -->
+			<section>
+				<section>
+					<h2>2. Starting Up Maperitive</h2>
+					<h4>Opening up Maperitive on Windows / Mac / Linux</h4>
+				</section>
+
+				<section>
+					<h3>Windows</h3>
+					<p>Ensure XP SP3 or later with Microsoft.NET 4 installed and simply run <em>Maperitive.exe</em></p>
+				</section>
+
+				<section>
+					<h3>Mac / Linux</h3>
+					<p>Ensure <em><a href="http://www.go-mono.com/mono-downloads/download.html">Mono</a></em> is installed and assuming Maperitive is extracted to Desktop, run the following:</p>
+					<pre><code data-trim>
+						$ sh ~/Desktop/Maperitive/Maperitive.sh
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Screenshot</h3>
+					<a class="fancybox" href="assets/img/3-maperitive-screen.png">
+						<img src="assets/img/3-maperitive-screen.png" alt="Maperitive Screenshot" height="500" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Interface</h3>
+					<a class="fancybox" href="assets/img/3-maperitive-interface.png">
+						<img src="assets/img/3-maperitive-interface.png" alt="Maperitive Interface" />
+					</a>
+				</section>
+			</section>
+
+
+			<!-- SLIDE: 3. GEO BOUNDING BOX -->
 			<section>
 
 				<section>
-					<h2>2. Geo Bounding Box</h2>
+					<h2>3. Geo Bounding Box</h2>
 					<h4>Retrieving geo coordinates and setting up geo bounds</h4>
 				</section>
 
@@ -141,42 +178,6 @@
 					</a>
 				</section>
 
-			</section>
-
-
-			<!-- SLIDE: 3. Starting Up Maperitive -->
-			<section>
-				<section>
-					<h2>3. Starting Up Maperitive</h2>
-					<h4>Opening up Maperitive on Windows / Mac / Linux</h4>
-				</section>
-
-				<section>
-					<h3>Windows</h3>
-					<p>Ensure XP SP3 or later with Microsoft.NET 4 installed and simply run <em>Maperitive.exe</em></p>
-				</section>
-
-				<section>
-					<h3>Mac / Linux</h3>
-					<p>Ensure <em><a href="http://www.go-mono.com/mono-downloads/download.html">Mono</a></em> is installed and assuming Maperitive is extracted to Desktop, run the following:</p>
-					<pre><code data-trim>
-						$ sh ~/Desktop/Maperitive/Maperitive.sh
-					</code></pre>
-				</section>
-
-				<section>
-					<h3>Screenshot</h3>
-					<a class="fancybox" href="assets/img/3-maperitive-screen.png">
-						<img src="assets/img/3-maperitive-screen.png" alt="Maperitive Screenshot" height="500" />
-					</a>
-				</section>
-
-				<section>
-					<h3>Interface</h3>
-					<a class="fancybox" href="assets/img/3-maperitive-interface.png">
-						<img src="assets/img/3-maperitive-interface.png" alt="Maperitive Interface" />
-					</a>
-				</section>
 			</section>
 
 
@@ -323,7 +324,7 @@
 			<!-- SLIDE: 8. USING MAP TILES -->
 			<section>
 				<section>
-					<h2>7. Map Tiles</h2>
+					<h2>8. Map Tiles</h2>
 					<h4>How to use them</h4>
 				</section>
 
@@ -373,8 +374,55 @@ L.tileLayer('http://calvinnwq.github.io/maperitive-presentation/assets/tiles/{z}
 				</section>
 
 				<section>
+					<h3>Example Result</h3>
+					<p>This works for zoom 11 and 12 and is bound to the bounding box which prevents any tile outside of it from being loaded.</p>
 					<div id="map"></div>
+				</section>
+			</section>
 
+			<!-- SLIDE: SUMMARY -->
+			<section>
+				<section>
+					<h2>Summary</h2>
+					<h4>What did we learn today?</h4>
+				</section>
+
+				<section>
+					<h3>Maperitive Summary</h3>
+					<ul>
+						<li class="fragment">
+							<a href="#/1">What Maperitive is</a>
+						</li>
+						<li class="fragment">
+							<a href="#/2">Starting up Maperitive</a>
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Steps Summary</h3>
+					<ol>
+						<li class="fragment">
+							<a href="#/3">Obtaining geo bounding box</a>
+						</li>
+						<li class="fragment">
+							<a href="#/4">Exporting bitmap</a>
+						</li>
+						<li class="fragment">
+							<a href="#/5">Editing custom maps</a>
+						</li>
+						<li class="fragment">
+							<a href="#/6">Loading custom map in Maperitive</a>
+						</li>
+						<li class="fragment">
+							<a href="#/7">Generating Tiles</a>
+						</li>
+					</ol>
+				</section>
+
+				<section>
+					<h1>Fin ~</h1>
+					<p>Thank you for your attention</p>
 				</section>
 			</section>
 
@@ -382,11 +430,11 @@ L.tileLayer('http://calvinnwq.github.io/maperitive-presentation/assets/tiles/{z}
 
 	</div>
 
-	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="assets/js/jquery-1.10.1.min.js"></script>
 	<script src="assets/lib/js/head.min.js"></script>
 	<script src="assets/js/reveal.min.js"></script>
 	<script src="assets/plugin/fancybox/jquery.fancybox.pack.js"></script>
-	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+	<script src="assets/js/leaflet.js"></script>
 	<script src="assets/js/main.js"></script>
 
 </body>
