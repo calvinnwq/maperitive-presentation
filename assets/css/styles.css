@@ -13,3 +13,18 @@
 .reveal h2 {
 
 }
+
+#map {
+  width: 100%;
+  height: 500px;
+}
+
+.leaflet-tile-container img {
+  max-height: none !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+
+#map a {
+  line-height: auto;
+}
