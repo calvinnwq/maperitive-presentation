@@ -13,19 +13,19 @@
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-	<link rel="stylesheet" href="css/reveal.min.css">
-	<link rel="stylesheet" href="css/theme/default.css" id="theme">
+	<link rel="stylesheet" href="assets/css/reveal.min.css">
+	<link rel="stylesheet" href="assets/css/theme/sky.css" id="theme">
+	<link rel="stylesheet" href="assets/lib/css/zenburn.css">
+	<link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.css" />
+	<link rel="stylesheet" href="assets/plugin/fancybox/jquery.fancybox.css">
+	<link rel="stylesheet" href="assets/css/styles.css">
 
-	<!-- For syntax highlighting -->
-	<link rel="stylesheet" href="lib/css/zenburn.css">
-
-	<!-- If the query includes 'print-pdf', use the PDF print sheet -->
 	<script>
-		document.write( '<link rel="stylesheet" href="css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
+		document.write( '<link rel="stylesheet" href="assets/css/print/' + ( window.location.search.match( /print-pdf/gi ) ? 'pdf' : 'paper' ) + '.css" type="text/css" media="print">' );
 	</script>
 
 	<!--[if lt IE 9]>
-	<script src="lib/js/html5shiv.js"></script>
+	<script src="assets/lib/js/html5shiv.js"></script>
 	<![endif]-->
 </head>
 
@@ -35,46 +35,359 @@
 
 		<div class="slides">
 
-			<section>
+			<!-- SLIDE: INTRODUCTION -->
+			<section id="slide-1">
 				<h1>Maperitive</h1>
-				<h3>Creating custom map tiles</h3>
+				<h3>Creating custom map tiles for bounded areas</h3>
 				<p>
 					<small>by Calvin Ng / <a href="http://twitter.com/calvinnwq">@calvinnwq</a></small>
 				</p>
+			</section>
+
+			<!-- SLIDE: 1. MAPERITIVE -->
+			<section>
+				<section>
+					<h2>1. Maperitive</h2>
+					<p class="fragment">
+						<q cite="http://maperitive.net/">&ldquo;Maperitive is a <strong>FREE</strong> desktop application for drawing maps based on OpenStreetMap and GPS data. You can define <strong>what</strong> gets on the map and <strong>how</strong> it is painted. You can also export these maps into <strong>bitmaps</strong> and <strong>SVG</strong> files and print them.&rdquo;</q>
+					</p>
+				</section>
+
+				<section>
+					<h3>System Requirements</h3>
+					<p class="fragment">
+						<strong>Windows</strong>: XP SP3 or later with <a href="http://www.microsoft.com/en-us/download/details.aspx?id=17113">Microsoft.NET 4</a> installed.
+						<strong>Linux</strong> &amp; <strong>Mac</strong>: latest <a href="http://www.go-mono.com/mono-downloads/download.html">Mono</a> installed.
+					</p>
+				</section>
+
+				<section>
+					<h3>What can I do with Maperitive?</h3>
+					<ul>
+						<li class="fragment">
+							Make maps with custom content and style
+						</li>
+						<li class="fragment">
+							Render relief contours, hillshading, <a class="fancybox-url" href="http://en.wikipedia.org/wiki/Hypsometric_tints">hypsometric tinting</a>
+						</li>
+						<li class="fragment">
+							Exporting maps to bitmaps or SVG files
+						</li>
+						<li class="fragment">
+							Make map tiles for the web
+						</li>
+						<li class="fragment">
+							Automating mapmaking through scripts, Python and Maperitive command-line console
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Maperitive Links</h3>
+					<ul>
+						<li>
+							<a href="http://maperitive.net/download/Maperitive-latest.zip" target="_blank">Download Link</a>
+						</li>
+						<li>
+							<a href="http://maperitive.net/docs/TenMinutesIntro.html" target="_blank">Ten Minute Intro</a>
+						</li>
+						<li>
+							<a href="http://maperitive.net/docs/default.html" target="_blank">Maperitive Documentation</a>
+						</li>
+					</ul>
+				</section>
+			</section>
+
+			<!-- SLIDE: 2. GEO BOUNDING BOX -->
+			<section>
+
+				<section>
+					<h2>2. Geo Bounding Box</h2>
+					<h4>Retrieving geo coordinates and setting up geo bounds</h4>
+				</section>
+
+				<section>
+					<h3>Considerations?</h3>
+					<ul>
+						<li class="fragment">
+							Are there any specific countries? (e.g. Singapore)
+						</li>
+						<li class="fragment">
+							What are the zoom levels to consider?
+						</li>
+						<li class="fragment">
+							Is the map fixed or interactive?
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Online Tools</h3>
+					<ol>
+						<li class="fragment">
+							<a href="http://www.openstreetmap.org/export">OpenStreetMap</a>
+						</li>
+						<li class="fragment">
+							<a href="http://boundingbox.klokantech.com/">Bounding Box</a> by <a href="http://www.klokantech.com/">Klokan Technologies</a>
+						</li>
+					</ol>
+				</section>
+
+				<section>
+					<h3>Bounding Box</h3>
+					<p>Select an area and select "CSV" as type of data</p>
+					<a class="fancybox" href="assets/img/1-bounding-box.png">
+						<img src="assets/img/2-bounding-box.png" alt="Bounding Box Interface" />
+					</a>
+				</section>
+
+			</section>
+
+
+			<!-- SLIDE: 3. Starting Up Maperitive -->
+			<section>
+				<section>
+					<h2>3. Starting Up Maperitive</h2>
+					<h4>Opening up Maperitive on Windows / Mac / Linux</h4>
+				</section>
+
+				<section>
+					<h3>Windows</h3>
+					<p>Ensure XP SP3 or later with Microsoft.NET 4 installed and simply run <em>Maperitive.exe</em></p>
+				</section>
+
+				<section>
+					<h3>Mac / Linux</h3>
+					<p>Ensure <em><a href="http://www.go-mono.com/mono-downloads/download.html">Mono</a></em> is installed and assuming Maperitive is extracted to Desktop, run the following:</p>
+					<pre><code data-trim>
+						$ sh ~/Desktop/Maperitive/Maperitive.sh
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Screenshot</h3>
+					<a class="fancybox" href="assets/img/3-maperitive-screen.png">
+						<img src="assets/img/3-maperitive-screen.png" alt="Maperitive Screenshot" height="500" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Interface</h3>
+					<a class="fancybox" href="assets/img/3-maperitive-interface.png">
+						<img src="assets/img/3-maperitive-interface.png" alt="Maperitive Interface" />
+					</a>
+				</section>
+			</section>
+
+
+			<!-- SLIDE: 4. EXPORTING BITMAP -->
+			<section>
+
+				<section>
+					<h2>4. Exporting Bitmap</h2>
+					<h4>Exporting PNG for custom designing</h4>
+				</section>
+
+				<section>
+					<h3>Setting Bounding Box</h3>
+					<pre class="fragment"><code data-trim>
+						set-geo-bounds 103.406067,1.090327,104.246521,1.607913
+					</code></pre>
+					<a class="fancybox fragment" href="assets/img/4-geo-bounds.png">
+						<img src="assets/img/4-geo-bounds.png" alt="set-geo-bounds" height="500" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Zoom to Bounds</h3>
+					<pre class="fragment"><code data-trim>
+						zoom-bounds
+					</code></pre>
+					<a class="fancybox fragment" href="assets/img/4-geo-bounds.png">
+						<img src="assets/img/4-geo-bounds.png" alt="set-geo-bounds" height="500" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Export Bitmap</h3>
+					<pre class="fragment"><code data-trim>
+						export-bitmap zoom=12
+					</code></pre>
+					<a class="fancybox fragment" href="assets/img/4-export-bitmap.png">
+						<img src="assets/img/4-export-bitmap.png" alt="export-bitmap" height="500" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Export Bitmap</h3>
+					<p>2 files will be generated in <em>output</em> folder:</p>
+					<ul>
+						<li>output.png</li>
+						<li>output.png.georef <em>(required for later steps)</em></li>
+					</ul>
+				</section>
+
+			</section>
+
+			<!-- SLIDE: 5. EDITING CUSTOM MAP -->
+			<section>
+				<section>
+					<h2>5. Editing Custom Map</h2>
+					<h4>Designing of custom map and constraints</h4>
+				</section>
+
+				<section>
+					<h3>Constraints?</h3>
+					<ul>
+						<li class="fragment">
+							<em>output.png</em> should be the template to work upon.
+						</li>
+						<li class="fragment">
+							Custom designed map (let's call it <em>map.png</em>) should retain exact dimensions as <em>output.png</em>
+						</li>
+						<li class="fragment">
+							Multiple layers to show terrain / roads / etc.?
+						</li>
+					</ul>
+				</section>
+
+				<section>
+					<h3>Sample Custom Map</h3>
+					<p>For the sake of this presentation, here is a sample map I've made which I will name <em><strong><a href="assets/img/map.png" target="_blank">map.png</a></strong></em></p>
+					<img src="assets/img/5-edited-bitmap.png" alt="map.png" />
+				</section>
+			</section>
+
+			<!-- SLIDE: 6. LOADING CUSTOM MAP -->
+			<section>
+				<section>
+					<h2>6. Loading Custom Map</h2>
+					<h4>Load custom edited map in Maperitive</h4>
+				</section>
+
+				<section>
+					<h3>Custom Map Files</h3>
+					<p>Using <em><strong>map.png</strong></em> from our previous example, we will also need to create a copy of <em><strong>output.png.georef</strong></em> and rename that to <em><strong>map.png.georef</strong></em></p>
+					<a class="fancybox" href="assets/img/6-input-files.png">
+						<img src="assets/img/6-input-files.png" alt="Input files" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Load Image in Maperitive</h3>
+					<p class="fragment">Assuming we put <em>map.png</em> and <em>map.png.georef</em> back into the output folder:</p>
+					<pre class="fragment"><code data-trim>
+						load-image file=output/map.png background=false
+					</code></pre>
+					<a class="fancybox fragment" href="assets/img/6-load-image.png">
+						<img src="assets/img/6-load-image.png" alt="load-image" height="400" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Disable Other Maps</h3>
+					<p class="fragment">You can choose to disable underlying maps like the default Web map (OSM Mapnik) so they don't get generated by simply clicking on the yellow star under the <strong>Map Sources</strong> at the bottom right</p>
+					<a class="fancybox fragment" href="assets/img/6-disable-map.png">
+						<img src="assets/img/6-disable-map.png" alt="disable-map" />
+					</a>
+				</section>
+			</section>
+
+			<!-- SLIDE: 7. GENERATING TILES -->
+			<section>
+				<section>
+					<h2>7. Generate Tiles</h2>
+					<h4>Generating tiles for specific zoom levels</h4>
+				</section>
+
+				<section>
+					<h3>Generate Tiles</h3>
+					<p class="fragment">For this example we will generate tiles for 2 zoom levels (11 &amp; 12) for the bounding box we have.</p>
+					<pre style="width: 100%;" class="fragment"><code data-trim>
+						generate-tiles minzoom=11 maxzoom=12 bounds=103.406067,1.090327,104.246521,1.607913
+					</code></pre>
+					<a class="fancybox fragment" href="assets/img/7-generate-tile.png">
+						<img src="assets/img/7-generate-tile.png" alt="generate-tile" />
+					</a>
+					<p class="fragment">Generated tiles can be found in the <em><strong>Tiles</strong></em> folder</p>
+				</section>
+
+				<section>
+					<h3>Tiles Folder</h3>
+					<a class="fancybox fragment" href="assets/img/7-tile-folder.png">
+						<img src="assets/img/7-tile-folder.png" alt="tile-folder" />
+					</a>
+				</section>
+			</section>
+
+			<!-- SLIDE: 8. USING MAP TILES -->
+			<section>
+				<section>
+					<h2>7. Map Tiles</h2>
+					<h4>How to use them</h4>
+				</section>
+
+				<section>
+					<h3>Hosting them</h3>
+					<p class="fragment">Copy the folders to your project directory. In the example to follow, I've placed them in my assets folder of this presentation with path <em><strong>assets/tiles/</strong></em></p>
+					<a class="fancybox fragment" href="assets/img/7-tile-folder.png">
+						<img src="assets/img/7-tile-folder.png" alt="tile-folder" />
+					</a>
+				</section>
+
+				<section>
+					<h3>Referencing them in code</h3>
+					<p class="fragment">Referencing them is as simple as using the following URL:</p>
+					<pre style="width:100%;" class="fragment"><code data-trim>
+var tile_url =
+"http://calvinnwq.github.io/maperitive-presentation/assets/tiles/{z}/{x}/{y}.png";
+					</code></pre>
+				</section>
+
+				<section>
+					<h3>Example Code</h3>
+					<p>In this example, I will make use of <a href="http://leafletjs.com/" target="_blank">leaflet.js</a>.</p>
+					<pre style="width:100%;" class="fragment"><code data-trim>
+// create bounds
+var bounds = new L.LatLngBounds(
+  new L.LatLng(1.090327, 103.406067)
+, new L.LatLng(1.607913, 104.246521)
+);
+
+// create a map in the "map" div, set the view to a given place and zoom
+var map = L.map('map', {
+  "center" : [1.335, 103.820]
+, "zoom" : 11
+, "minZoom" : 11
+, "maxZoom" : 12
+, "maxBounds" : bounds
+});
+
+// add an OpenStreetMap tile layer
+L.tileLayer('http://calvinnwq.github.io/maperitive-presentation/assets/tiles/{z}/{x}/{y}.png', {
+  attribution: "Calvin's custom map design"
+, minZoom: 11
+, maxZoom: 12
+}).addTo(map);
+					</code></pre>
+				</section>
+
+				<section>
+					<div id="map"></div>
+
+				</section>
 			</section>
 
 		</div>
 
 	</div>
 
-	<script src="lib/js/head.min.js"></script>
-	<script src="js/reveal.min.js"></script>
-
-	<script>
-
-		// Full list of configuration options available here:
-		// https://github.com/hakimel/reveal.js#configuration
-		Reveal.initialize({
-			controls: true,
-			progress: true,
-			history: true,
-			center: true,
-
-			theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
-			transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
-
-			// Optional libraries used to extend on reveal.js
-			dependencies: [
-				{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
-				{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
-				{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
-				{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
-				{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
-			]
-		});
-
-	</script>
+	<script src="http://code.jquery.com/jquery-latest.min.js"></script>
+	<script src="assets/lib/js/head.min.js"></script>
+	<script src="assets/js/reveal.min.js"></script>
+	<script src="assets/plugin/fancybox/jquery.fancybox.pack.js"></script>
+	<script src="http://cdn.leafletjs.com/leaflet-0.6.2/leaflet.js"></script>
+	<script src="assets/js/main.js"></script>
 
 </body>
 </html>
