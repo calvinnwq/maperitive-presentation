@@ -9,12 +9,11 @@ Slides were created using [reveal.js](https://github.com/hakimel/reveal.js "reve
 Table of contents
 -----------------
 
-i. Background
-
-1. What is Maperitive?
-2. Starging up Maperitive
-3. Obtaining geo bounding box
-4. Exporting bitmap
-5. Editing custom maps
-6. Loading custom maps in Maperitive
-7. Generating map tiles
+1. Background
+2. What is Maperitive?
+3. Starging up Maperitive
+4. Obtaining geo bounding box
+5. Exporting bitmap
+6. Editing custom maps
+7. Loading custom maps in Maperitive
+8. Generating map tiles
