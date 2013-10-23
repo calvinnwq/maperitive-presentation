@@ -30,3 +30,6 @@
   font: bold 24px 'Lucida Console', Monaco, monospace;
 }
 
+.leaflet-fade-anim .leaflet-tile {
+  margin: 0;
+}

@@ -28,6 +28,8 @@ $(document).ready(function() {
 		});
 
 
+	$('#map-run').click(function(e) {
+		e.preventDefault();
 		// create bounds
 		var bounds = new L.LatLngBounds(
 		  new L.LatLng(1.090327, 103.406067)
@@ -50,4 +52,5 @@ $(document).ready(function() {
 		, minZoom: 11
 		, maxZoom: 12
 		}).addTo(map);
+	});
 });
