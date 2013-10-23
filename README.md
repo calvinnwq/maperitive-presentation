@@ -9,6 +9,8 @@ Slides were created using [reveal.js](https://github.com/hakimel/reveal.js "reve
 Table of contents
 -----------------
 
+i. Background
+
 1. What is Maperitive?
 2. Starging up Maperitive
 3. Obtaining geo bounding box
